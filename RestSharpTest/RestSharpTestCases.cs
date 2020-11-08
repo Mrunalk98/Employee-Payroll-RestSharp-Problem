@@ -88,5 +88,18 @@ namespace RestSharpTest
             Assert.AreEqual("Lavanya", dataResponse.name);
             Assert.AreEqual("13000", dataResponse.salary);
         }
+
+        [TestMethod]
+        public void GivenEmployee_OnDelete_ShouldReturnSuccess()
+        {
+            // arrange
+            RestRequest request = new RestRequest("/employees/13", Method.DELETE);
+
+            // act
+            IRestResponse response = client.Execute(request);
+
+            // assert
+            Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
+        }
     }
 }
